@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2048 game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/2048style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1 class="title">2048</h1>
+            <div class="score-container">0</div>
+        </div>
+        <br />
+        <p class="game-intro">Join the numbers and get to the <strong>2048 tile!</strong></p>
+        <br />
+        <div class="game-container">
+            <div class="game-message">
+                <p></p>
+                <div class="lower">
+                    <a class="retry-button">Try again</a>
+                </div>
+            </div>
+            <div class="grid-container">
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+            </div>
+            <div class="tile-container">
+            </div>
+        </div>
+        <br />
+        <p class="game-explanation">
+            <strong class="important">How to play:</strong> Swipe the <strong>tiles</strong> to move them. When two tiles with the same number touch, they <strong>merge into one!</strong>
+        </p>
+        <hr>
+    </div>
+    <script src='script/hammer.js'></script>
+    <script src="script/game2048.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Smile Tic Tac Toe</title>
+    <link rel='stylesheet prefetch' href='https://getbootstrap.com/2.3.2/assets/css/bootstrap.css'>
+    <link rel="stylesheet" type="text/css" href="css/tic-tac-toe.css">
+</head>
+<body>
+    <div id="Replay" align="center" style="visibility: hidden; height :0;">
+        <div align="center">
+            <h3>Smile Tic Tac Toe</h3>
+            <h4><span id='winner'>Player X Wins</span></h4>
+        </div>
+        <button type="button" onclick="ReplayGame();" class="btn-success btn">Play Again!</button>
+    </div>
+    <div align="center" id="maincontent">
+        <div align="center">
+            <h3>Smile Tic Tac Toe</h3>
+            <h4><span id='turn'>Player 1</span></h4>
+        </div>
+        <div id="tictactoe" align="center"></div>
+        <br />
+        <div align="center">
+            <button type="button" onclick="startNewGame();" class="btn-success btn">Restart!</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="script/tic-tac-toe.js"></script>
+</body>
+</html>

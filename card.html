@@ -1,0 +1,124 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript Card Game v1.1 | The Art of Web</title>
+  <link rel="stylesheet" type="text/css" href="css/css-animation.css">
+</head>
+
+<body>
+
+<div id="stage">
+<div id="felt">
+<div id="card_0"><img onclick="cardClick(0);" src="img/back.png"></div>
+<div id="card_1"><img onclick="cardClick(1);" src="img/back.png"></div>
+<div id="card_2"><img onclick="cardClick(2);" src="img/back.png"></div>
+<div id="card_3"><img onclick="cardClick(3);" src="img/back.png"></div>
+<div id="card_4"><img onclick="cardClick(4);" src="img/back.png"></div>
+<div id="card_5"><img onclick="cardClick(5);" src="img/back.png"></div>
+<div id="card_6"><img onclick="cardClick(6);" src="img/back.png"></div>
+<div id="card_7"><img onclick="cardClick(7);" src="img/back.png"></div>
+<div id="card_8"><img onclick="cardClick(8);" src="img/back.png"></div>
+<div id="card_9"><img onclick="cardClick(9);" src="img/back.png"></div>
+<div id="card_10"><img onclick="cardClick(10);" src="img/back.png"></div>
+<div id="card_11"><img onclick="cardClick(11);" src="img/back.png"></div>
+<div id="card_12"><img onclick="cardClick(12);" src="img/back.png"></div>
+<div id="card_13"><img onclick="cardClick(13);" src="img/back.png"></div>
+<div id="card_14"><img onclick="cardClick(14);" src="img/back.png"></div>
+<div id="card_15"><img onclick="cardClick(15);" src="img/back.png"></div>
+</div>
+</div>
+
+<script type="text/javascript">
+
+  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+  // Please acknowledge use of this code by including this header.
+
+  var card_value = ['1C','2C','3C','4C','5C','6C','7C','8C','1H','2H','3H','4H','5H','6H','7H','8H'];
+
+  // set default positions
+  var card_left = [];
+  var card_top = [];
+
+  for(var i=0; i < 16; i++) {
+    card_left[i] = 6 + 70 * (i%4);
+    card_top[i] = 6 + 100 * Math.floor(i/4);
+  }
+
+  var started = false;
+  var cards_turned = 0;
+  var matches_found = 0;
+  var card1 = false;
+  var card2 = false;
+
+  function moveToPlace(id)
+  {
+    var el = document.getElementById("card_" + id);
+    el.style["z-index"] = "1000";
+    el.style["left"] = card_left[id] + "px";
+    el.style["top"] = card_top[id] + "px";
+    el.style["z-index"] = "0";
+  }
+
+  function hideCard(id)
+  {
+    var el = document.getElementById("card_" + id);
+    el.firstChild.src = "img/back.png";
+    el.style["WebkitTransform"] = "scale(.9)";
+  }
+
+  function moveToPack(id)
+  {
+    hideCard(id);
+    var el = document.getElementById("card_" + id);
+    el.style["z-index"] = "1000";
+    el.style["left"] = "0";
+    el.style["top"] = "429";
+    el.style["z-index"] = "0";
+  }
+
+  // flip over card and check for match
+  function showCard(id)
+  {
+    if(id === card1) return;
+    var el = document.getElementById("card_" + id);
+    el.firstChild.src = "img/"+ card_value[id] + ".png";
+    el.style["WebkitTransform"] = "scale(.8)";
+    if(++cards_turned == 2) {
+      card2 = id;
+      // check whether both cards have the same value
+      if(parseInt(card_value[card1]) == parseInt(card_value[card2])) {
+        setTimeout("moveToPack(" + card1 + "); moveToPack(" + card2 + ");", 1000);
+        if(++matches_found == 8) {
+          // game over
+          matches_found = 0;
+          started = false;
+        }
+      } else {
+        setTimeout("hideCard(" + card1 + "); hideCard(" + card2 + ");", 800);
+      }
+      card1 = card2 = false;
+      cards_turned = 0;
+    } else {
+      card1 = id;
+    }
+  }
+
+  function cardClick(id)
+  {
+    if(started) {
+      showCard(id);
+    } else {
+      // shuffle and deal cards
+      card_value.sort(function() { return Math.round(Math.random()) - 0.5; });
+      for(i=0; i < 16; i++) setTimeout("moveToPlace(" + i + ")", i * 100);
+      started = true;
+    }
+  }
+
+</script>
+
+
+
+</body>
+</html>
